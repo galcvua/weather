@@ -62,9 +62,10 @@ final class WeatherApiProvider implements WeatherProviderInterface
                 condition: new Condition($data['current']['condition']['text'], $data['current']['condition']['icon']),
                 humidity: (int) $data['current']['humidity'],
                 wind: (float) $data['current']['wind_kph'],
-                lastUpdated: new DateTimeImmutable(
-                    datetime: $data['current']['last_updated'],
-                    timezone: new DateTimeZone($data['location']['tz_id'] ?? 'UTC'),
+                lastUpdated: $this->createLastUpdated(
+                    lastUpdated: $data['current']['last_updated'],
+                    tzId: $data['location']['tz_id'] ?? 'UTC',
+                    lastUpdatedEpoch: (int) $data['current']['last_updated_epoch'],
                 ),
             );
         } catch (Exception $e) {
@@ -77,5 +78,23 @@ final class WeatherApiProvider implements WeatherProviderInterface
         $this->eventDispatcher->dispatch(new WeatherFetchedEvent($city, $weather, self::class));
 
         return $weather;
+    }
+
+    /**
+     * In case of invalid timezone, fallback to UTC with epoch timestamp.
+     */
+    private function createLastUpdated(
+        string $lastUpdated,
+        string $tzId,
+        int $lastUpdatedEpoch,
+    ): DateTimeImmutable {
+        try {
+            return new DateTimeImmutable($lastUpdated, new DateTimeZone($tzId));
+        } catch (Exception) {
+            // ignore and fallback
+        }
+
+        // fallback: UTC з epoch
+        return new DateTimeImmutable('@' . $lastUpdatedEpoch);
     }
 }

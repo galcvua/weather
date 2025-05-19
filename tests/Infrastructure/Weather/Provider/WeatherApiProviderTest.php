@@ -46,6 +46,7 @@ class WeatherApiProviderTest extends TestCase
                 'humidity' => 60,
                 'wind_kph' => 10.0,
                 'last_updated' => '2024-05-18 12:00',
+                'last_updated_epoch' => 1716038400,
             ],
         ];
 
@@ -80,6 +81,54 @@ class WeatherApiProviderTest extends TestCase
             (new DateTimeImmutable('2024-05-18 12:00'))->format('Y-m-d H:i'),
             $weather->lastUpdated->format('Y-m-d H:i')
         );
+    }
+
+    public function testInvalidTimezone(): void
+    {
+        $city = 'Kyiv';
+        $apiKey = 'test-key';
+
+        $mockResponseData = [
+            'location' => [
+                'name' => 'Kyiv',
+                'country' => 'Ukraine',
+                'tz_id' => 'Invalid/Timezone',
+            ],
+            'current' => [
+                'temp_c' => 20.5,
+                'condition' => [
+                    'text' => 'Sunny',
+                    'icon' => '//cdn.weatherapi.com/weather/64x64/day/113.png',
+                ],
+                'humidity' => 60,
+                'wind_kph' => 10.0,
+                'last_updated' => '2024-05-18 12:00',
+                'last_updated_epoch' => 1747665900,
+            ],
+        ];
+
+        $mockResponse = $this->createMock(ResponseInterface::class);
+        $mockResponse->method('getStatusCode')->willReturn(Response::HTTP_OK);
+        $mockResponse->method('toArray')->willReturn($mockResponseData);
+
+        $mockHttpClient = $this->createMock(HttpClientInterface::class);
+        $mockHttpClient->method('request')->willReturn($mockResponse);
+
+        $mockDispatcher = $this->createMock(EventDispatcherInterface::class);
+        $mockDispatcher->expects($this->once())
+            ->method('dispatch')
+            ->with($this->isInstanceOf(WeatherFetchedEvent::class));
+
+        $provider = new WeatherApiProvider(
+            $mockDispatcher,
+            $mockHttpClient,
+            $apiKey
+        );
+
+        $weather = $provider->getWeather($city);
+
+        $this->assertInstanceOf(Weather::class, $weather);
+        $this->assertSame(1747665900, $weather->lastUpdated->getTimestamp());
     }
 
     /**
