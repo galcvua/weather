@@ -10,10 +10,10 @@ import { Controller } from '@hotwired/stimulus';
  */
 export default class extends Controller {
     connect() {
-        const frame = this.element.querySelector('turbo-frame#weather');
+        const frame = this.element.querySelector('turbo-frame');
 
         if (!frame) {
-            console.warn('No turbo-frame found with id "weather"');
+            console.warn('No turbo-frame found');
             return;
         }
 
@@ -29,14 +29,14 @@ export default class extends Controller {
         frame.addEventListener('turbo:fetch-request-error', errorListener);
         frame.addEventListener('turbo:frame-missing', errorListener);
 
-        const updateInterval = data.interval;
+        const updateInterval = Number(data.interval);
 
         const reloadFrame = () => {
             frame.reload();
             setTimeout(reloadFrame, updateInterval);
         };
 
-        if (updateInterval ) {
+        if (updateInterval) {
             setTimeout(reloadFrame, updateInterval);
         }
     }
