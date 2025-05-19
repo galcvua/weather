@@ -1,0 +1,6 @@
+parameters:
+    weather.cities:
+        - London
+        - Kyiv
+        - Warsaw
+    weather.ttl: 600

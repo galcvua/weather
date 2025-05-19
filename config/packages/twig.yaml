@@ -1,4 +1,7 @@
 twig:
+    globals:
+        cities: '%weather.cities%'
+        project_repository: '%project.repository%'
     file_name_pattern: '*.twig'
 
 when@test:

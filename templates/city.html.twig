@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'header'|trans({ city }) }}</h1>
+
+    <div
+        class="weather"
+        data-controller="weather"
+        data-interval="{{ updateInterval }}"
+        data-error-message="{{ 'error'|trans|e('html_attr') }}"
+    >
+        <turbo-frame id="weather_data" src="{{ path('weather_' ~ city ) }}">
+            {{ 'loading'|trans }}
+        </turbo-frame>
+    </div>
+
+    <div class="sities">
+        {% for nextCity in cities %}
+            <a href="{{ path('city_' ~ nextCity) }}" class="city{{ city == nextCity ? ' active' : '' }}">
+                {{ nextCity }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="banner">
+        <p>{{ 'banner.p1'|trans }}</p>
+        <p><a href={{ project_repository }}>{{ 'banner.link'|trans }}</a></p>
+    </div>
+{% endblock %}

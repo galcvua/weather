@@ -1,0 +1,10 @@
+<turbo-frame id="weather_data">
+    <div class="weather_data">
+        <div>{{ 'weather.location'|trans({ city: weather.location.city, country: weather.location.country }) }}</div>
+        <div>{{ 'weather.temperature'|trans({ temperature: weather.temperature }) }}</div>
+        <div>{{ 'weather.condition'|trans({ condition: weather.condition.label }) }}</div>
+        <div>{{ 'weather.humidity'|trans({ humidity: weather.humidity }) }}</div>
+        <div>{{ 'weather.wind'|trans({ wind: weather.wind }) }}</div>
+        <div>{{ 'weather.last_updated'|trans({ time: weather.lastUpdated|date('H:i T') }) }}</div>
+    </div>
+</turbo-frame>

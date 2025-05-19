@@ -1,0 +1,16 @@
+banner:
+    p1: Building a weather app in Symfony is easy — until DDD and “best practices” get involved.
+    link: See how we tackle it on GitHub.
+
+error: 'The weather data is not available. Please try again later.'
+header: 'Whether the weather in… {city}'
+loading: 'Loading…'
+title: 'Whether the weather - Symfony DDD App'
+
+weather:
+    condition: 'Condition: {condition}'
+    humidity: 'Humidity: {humidity}%'
+    last_updated: 'Last updated: {time}'
+    location: 'Current weather in {city}, {country}'
+    temperature: 'Temperature: {temperature} °C'
+    wind: 'Wind: {wind} km/h'
