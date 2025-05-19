@@ -9,7 +9,7 @@ Demo: <https://weather.symfonystudio.com/>
 1. **Clone the repository**
 
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/galcvua/weather.git
    cd weather
    ```
 
@@ -35,6 +35,7 @@ Demo: <https://weather.symfonystudio.com/>
    chmod -R 777 var
    ```
 
+   Note: These commands are for Unix-like systems. On Windows, create the directories manually.
 5. **Configure parameters**
    - Edit `config/packages/weather.yaml`
 
@@ -58,6 +59,8 @@ Demo: <https://weather.symfonystudio.com/>
    ```sh
    symfony serve
    ```
+
+  Alternatively, you can use your preferred web server.
 
 ## Running Tests
 
