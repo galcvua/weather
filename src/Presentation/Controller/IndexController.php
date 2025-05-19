@@ -26,7 +26,7 @@ class IndexController extends AbstractController
         $city = $this->cities[0] ?? null;
 
         if ($city) {
-            return $this->redirectToRoute('weather_' . $city);
+            return $this->redirectToRoute('city_' . $city);
         }
 
         return new Response('<html><body><h1>No cities available</h1></body></html>');
