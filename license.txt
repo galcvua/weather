@@ -1,0 +1,13 @@
+
+Candidate Assessment License
+
+This license agreement (the "Agreement") is a legal agreement between the licensee ("You") and Wowa (the "Licensor"). By using or accessing the code licensed under this Agreement, you agree to be bound by the terms of this Agreement.
+License Grant. Licensor hereby grants to You a non-exclusive, non-transferrable, non-assignable, and limited license to access and use the code solely for the purpose of assessing a candidate's programming skills during the candidate's job interview process.
+Restrictions. You shall not modify, distribute, sell, sublicense, rent, lease, transfer, or otherwise use the code for any other purpose without the prior written consent of Licensor. You shall not reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code for any portion of the code.
+Ownership. Licensor retains all rights, title, and interest in and to the code and all intellectual property rights therein. You acknowledge that you are only licensed to use the code and that the ownership of the code remains with Licensor.
+Term and Termination. This Agreement shall remain in effect until terminated by either party. Licensor may terminate this Agreement at any time in the event of your breach of any term or condition of this Agreement. Upon termination, You shall immediately cease all use of the code and destroy all copies in your possession.
+Disclaimer of Warranty. The code is provided "AS IS" and Licensor disclaims all warranties, express or implied, including, but not limited to, any warranties of merchantability, fitness for a particular purpose, or non-infringement.
+Limitation of Liability. Licensor shall not be liable for any indirect, special, incidental, or consequential damages, including, but not limited to, damages for loss of profits, data, or use, even if advised of the possibility of such damages.
+Governing Law. This Agreement shall be governed by the laws of Ukraine, excluding its choice of laws provisions.
+Entire Agreement. This Agreement constitutes the entire agreement between the parties regarding the subject matter hereof and supersedes all prior or contemporaneous agreements or understandings, whether written or oral.
+By using or accessing the code, You acknowledge that You have read this Agreement, understand it, and agree to be bound by its terms and conditions. If you do not agree to the terms and conditions of this Agreement, do not use or access the code.
