@@ -71,6 +71,12 @@
     "scripts": {
         "phpstan": "./vendor/bin/phpstan analyse",
         "fix": "./vendor/bin/php-cs-fixer fix",
+        "test": "./vendor/bin/phpunit",
+        "check": [
+            "@fix",
+            "@phpstan",
+            "@test"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",

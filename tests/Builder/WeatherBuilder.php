@@ -25,9 +25,9 @@ class WeatherBuilder
         $this->lastUpdated = new DateTimeImmutable();
     }
 
-    public function withLocation(Location $location): self
+    public function withLocation(string $city, string $country = 'Newerland'): self
     {
-        $this->location = $location;
+        $this->location = new Location($city, $country);
 
         return $this;
     }
@@ -39,9 +39,9 @@ class WeatherBuilder
         return $this;
     }
 
-    public function withCondition(Condition $condition): self
+    public function withCondition(string $label, string $iconUrl = ''): self
     {
-        $this->condition = $condition;
+        $this->condition = new Condition($label, $iconUrl);
 
         return $this;
     }

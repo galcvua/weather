@@ -5,6 +5,6 @@
         <div>{{ 'weather.condition'|trans({ condition: weather.condition.label }) }}</div>
         <div>{{ 'weather.humidity'|trans({ humidity: weather.humidity }) }}</div>
         <div>{{ 'weather.wind'|trans({ wind: weather.wind }) }}</div>
-        <div>{{ 'weather.last_updated'|trans({ time: weather.lastUpdated|date('H:i T') }) }}</div>
+        <div>{{ 'weather.last_updated'|trans({ time: weather.lastUpdated|date('H:i e', false) }) }}</div>
     </div>
 </turbo-frame>

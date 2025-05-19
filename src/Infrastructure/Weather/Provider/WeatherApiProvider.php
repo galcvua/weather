@@ -11,6 +11,7 @@ use App\Domain\Weather\ValueObject\Condition;
 use App\Domain\Weather\ValueObject\Location;
 use App\Domain\Weather\ValueObject\Weather;
 use DateTimeImmutable;
+use DateTimeZone;
 use Exception;
 use SensitiveParameter;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -52,16 +53,19 @@ final class WeatherApiProvider implements WeatherProviderInterface
             );
         }
 
-        $data = $response->toArray(false);
-
         try {
+            $data = $response->toArray(false);
+
             $weather = new Weather(
                 location: new Location($data['location']['name'], $data['location']['country']),
                 temperature: (float) $data['current']['temp_c'],
                 condition: new Condition($data['current']['condition']['text'], $data['current']['condition']['icon']),
                 humidity: (int) $data['current']['humidity'],
                 wind: (float) $data['current']['wind_kph'],
-                lastUpdated: new DateTimeImmutable($data['current']['last_updated']),
+                lastUpdated: new DateTimeImmutable(
+                    datetime: $data['current']['last_updated'],
+                    timezone: new DateTimeZone($data['location']['tz_id'] ?? 'UTC'),
+                ),
             );
         } catch (Exception $e) {
             throw WeatherProviderException::failedToFetch(
