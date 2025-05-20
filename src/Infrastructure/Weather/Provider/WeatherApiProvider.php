@@ -94,7 +94,6 @@ final class WeatherApiProvider implements WeatherProviderInterface
             // ignore and fallback
         }
 
-        // fallback: UTC з epoch
         return new DateTimeImmutable('@' . $lastUpdatedEpoch);
     }
 }

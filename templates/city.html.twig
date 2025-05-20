@@ -14,7 +14,7 @@
         </turbo-frame>
     </div>
 
-    <div class="sities">
+    <div class="cities">
         {% for nextCity in cities %}
             <a href="{{ path('city_' ~ nextCity) }}" class="city{{ city == nextCity ? ' active' : '' }}">
                 {{ nextCity }}

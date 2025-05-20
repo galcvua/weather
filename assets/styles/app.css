@@ -27,7 +27,7 @@ body {
         padding: 2rem;
     }
 
-    .sities {
+    .cities {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

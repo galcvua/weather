@@ -83,6 +83,10 @@ class WeatherApiProviderTest extends TestCase
         );
     }
 
+    /**
+     * @covers ::__construct
+     * @covers ::getWeather
+     */
     public function testInvalidTimezone(): void
     {
         $city = 'Kyiv';
