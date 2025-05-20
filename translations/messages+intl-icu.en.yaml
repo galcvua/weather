@@ -1,6 +1,6 @@
 banner:
     p1: Building a weather app in Symfony is easy — until DDD and “best practices” get involved.
-    link: See how we tackle it on GitHub
+    link: See how we weather it on GitHub
 
 error: 'The weather data is not available. Please try again later.'
 header: 'Whether the weather in… {city}'
